@@ -1,30 +1,27 @@
 import { useContext, useState } from 'react';
-import { BrowserRouter, Router, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { UserContext } from './constants/Contexts';
 import LoginPage from './Pages/LoginPage/LoginPage';
-import SignPage from './Pages/SignPage/SignPage';
+import SignInPage from './Pages/SignInPage/SignInPage';
 import HabbitsPage from './Pages/HabbitsPage/HabbitsPage';
 import TodaysPage from './Pages/TodaysPage/TodaysPage';
 import HistoryPage from './Pages/HistoryPage/HistoryPage';
+import { Pages } from './constants/routes';
 
 function App() {
   useContext(UserContext);
-  const user = {
-    name: '',
-    token: '',
-    seila: ''
-  };
+  const [user, setUser] = useState(0);
 
   return (
-    <UserContext.Provider value={user}>
+    <UserContext.Provider value={{user, setUser}}>
       <BrowserRouter>
-        <Router>
-          <Route path='/' element={<LoginPage />} />
-          <Route path='/cadastro' element={<SignPage />} />
-          <Route path='/habitos' element={<HabbitsPage />} />
-          <Route path='/hoje' element={<TodaysPage />} />
-          <Route path='/historico' element={<HistoryPage />} />
-        </Router>
+        <Routes>
+          <Route path={Pages.login} element={<LoginPage />} />
+          <Route path={Pages.signIn} element={<SignInPage />} />
+          <Route path={Pages.habbits} element={<HabbitsPage />} />
+          <Route path={Pages.today} element={<TodaysPage />} />
+          <Route path={Pages.history} element={<HistoryPage />} />
+        </Routes>
       </BrowserRouter>
     </UserContext.Provider>
   )
