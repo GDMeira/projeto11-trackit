@@ -9,6 +9,11 @@ export const ListTodaysHabbits = '/habits/today';
 export const DeleteHabbit = ID_DO_HABITO => `/habits/${ID_DO_HABITO}`;
 export const TickHabbit = ID_DO_HABITO => `/habits/${ID_DO_HABITO}/check`;
 export const UntickHabbit = ID_DO_HABITO => `/habits/${ID_DO_HABITO}/uncheck`;
+export const HeaderConfig = token => {
+    return {headers: {
+                'Authorization': `Bearer ${token}`
+            }}
+};
 
 export const Pages = {
     login: '/',
