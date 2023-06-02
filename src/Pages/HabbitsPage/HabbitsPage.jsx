@@ -1,9 +1,7 @@
 import { useContext, useEffect } from "react";
 import styled from "styled-components";
 import { HabbitsContext, UserContext } from "../../constants/Contexts";
-import axios from "axios";
-import { BASE_URL, HeaderConfig, Pages } from "../../constants/routes";
-import { ListHabbits } from "../../constants/routes";
+import { updateAllHabbits } from "../../constants/routes";
 import Header from '../../components/Header';
 import { useNavigate } from "react-router-dom";
 import NewHabbit from "./NewHabbit";
@@ -16,25 +14,18 @@ export default function HabbitsPage() {
     const { user, setUser } = useContext(UserContext);
 
     useEffect(() => {
-        axios.get(BASE_URL + ListHabbits, HeaderConfig(user.token))
-            .then(response => {
-                console.log(response.data);
+        const route = updateAllHabbits(user, setAllHabbits);
 
-                if (response.data.length !== allHabbits.length) {
-                    setAllHabbits(response.data);
-                }
-            })
-            .catch(error => {
-                alert(error.response.data.message);
-                navigate(Pages.login);
-            });
-    }, [allHabbits])
+        if (route !== 'stay') {
+            navigate(route);
+        }
+    }, [])
 
     function content() {
         if (allHabbits.length > 0) {
-            return <>
+            return <ul>
                 {allHabbits.map(habbit => <Habbit key={habbit.id} habbit={habbit}/>)}
-            </>
+            </ul>
         } else {
             return <p>
                 Você não tem nenhum hábito cadastrado ainda. 

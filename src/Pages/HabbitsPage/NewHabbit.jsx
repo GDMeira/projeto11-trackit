@@ -4,12 +4,15 @@ import { add } from 'ionicons/icons';
 import styled from 'styled-components';
 import { ThreeDots } from 'react-loader-spinner';
 import axios from 'axios';
-import { BASE_URL, CreateHabbit, HeaderConfig } from '../../constants/routes';
+import { BASE_URL, CreateHabbit, HeaderConfig, updateAllHabbits } from '../../constants/routes';
 import { HabbitsContext, UserContext } from '../../constants/Contexts';
+import { useNavigate } from 'react-router-dom';
 
 export default function NewHabbit() {
     const { user, _setUser } = useContext(UserContext);
     const { _otherStates, setAllHabbits } = useContext(HabbitsContext);
+
+    const navigate = useNavigate();
 
     const [creating, setCreating] = useState(false);
     const [formStates, setFormStates] = useState(initialFormStates());
@@ -43,7 +46,11 @@ export default function NewHabbit() {
             .then(response => {
                 setFormStates(initialFormStates());
                 setCreating(false); //hidding forms
-                setAllHabbits([]); //forcing refresh allHabbits
+                const route = updateAllHabbits(user, setAllHabbits);
+
+                if (route !== 'stay') {
+                    navigate(route);
+                }
             })
             .catch(error => {
                 alert(error.response.data.message);

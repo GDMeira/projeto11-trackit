@@ -1,43 +1,30 @@
 import { useContext, useEffect } from "react";
 import styled from "styled-components";
 import { HabbitsContext, UserContext } from "../../constants/Contexts";
-import axios from "axios";
-import { BASE_URL, HeaderConfig, Pages } from "../../constants/routes";
-import { ListTodaysHabbits } from "../../constants/routes";
+import { updateTodaysHabbits } from "../../constants/routes";
 import Header from '../../components/Header';
-import { useNavigate } from "react-router-dom";
 import TodaysHabbit from './TodaysHabbit';
 import MenuFooter from "../../components/MenuFooter";
 import Text from "./Text";
 
 export default function TodaysPage() {
-    const navigate = useNavigate();
     const { todaysHabbits, setTodaysHabbits, allHabbits, setAllHabbits } = useContext(HabbitsContext);
     const { user, setUser } = useContext(UserContext);
 
     useEffect(() => {
-        axios.get(BASE_URL + ListTodaysHabbits, HeaderConfig(user.token))
-            .then(response => {
-                console.log(response.data);
-                
-                if (todaysHabbits.length !== response.data.length) {
-                    setTodaysHabbits(response.data);
-                }
-            })
-            .catch(error => {
-                alert(error.response.data.message);
-                navigate(Pages.login);
-            });
-    }, [todaysHabbits]);
+        updateTodaysHabbits(user, setTodaysHabbits);
+    }, []);
 
     return (
         <>
             <Header />
             <TodaysHabbitsSC>
-                <Text/>
-                {todaysHabbits.map(habbit => <TodaysHabbit key={habbit.id} habbit={habbit}/>)}
+                <Text />
+                <ul>
+                    {todaysHabbits.map(habbit => <TodaysHabbit key={habbit.id} habbit={habbit} />)}
+                </ul>
             </TodaysHabbitsSC>
-            <MenuFooter/>
+            <MenuFooter />
         </>
     )
 }

@@ -5,13 +5,17 @@ import { HabbitsContext } from "../../constants/Contexts";
 import 'dayjs/locale/pt-br';
 
 export default function Text() {
+    const { _otherStates, allHabbits } = useContext(HabbitsContext);
+
+    const [states, setStates] = useState({phrase: 'Nenhum hábito concluído ainda',color: '#BABABA'});
+
     dayjs.locale('pt-br');
     const dateNow = dayjs(); // Obtém a data atual
     const nameWeekDay = filterName(dateNow.format('dddd')); // Retorna o nome do dia da semana (domingo, segunda, ..., sábado)
     const day = add0InName(dateNow.date()); // Retorna o dia do mês
     const month = add0InName(dateNow.month() + 1); //0 - janeiro
-    const [states, setStates] = useState({phrase: 'Nenhum hábito concluído ainda',color: '#BABABA'});
-    const { _otherStates, allHabbits } = useContext(HabbitsContext);
+    
+    
 
     useEffect(() => {
         let percentage = 0;
@@ -70,5 +74,6 @@ const TextSC = styled.div`
         font-size: 18px;
         color: ${props => props.color};
         margin-top: 5px;
+        margin-bottom: 30px;
     }
 `;

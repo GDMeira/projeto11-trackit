@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export const BASE_URL = 'https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit';
 export const SignIn = '/auth/sign-up';
 export const Login = '/auth/login';
@@ -22,3 +24,28 @@ export const Pages = {
     today: '/hoje',
     history: '/historico'
 };
+
+export function updateTodaysHabbits(user, setTodaysHabbits) {
+    axios.get(BASE_URL + ListTodaysHabbits, HeaderConfig(user.token))
+    .then(response => {
+        setTodaysHabbits(response.data);
+        return 'stay'
+    })
+    .catch(error => {
+        alert(error.response.data.message);
+        return Pages.login
+    });
+}
+
+export function updateAllHabbits(user, setAllHabbits) {
+    axios.get(BASE_URL + ListHabbits, HeaderConfig(user.token))
+            .then(response => {
+                console.log(response.data);
+                setAllHabbits(response.data);
+                return 'stay'
+            })
+            .catch(error => {
+                alert(error.response.data.message);
+                return Pages.login
+            });
+}

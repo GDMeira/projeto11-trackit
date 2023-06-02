@@ -7,16 +7,14 @@ import { useContext, useEffect, useState } from "react";
 import { HabbitsContext } from "../constants/Contexts";
 
 export default function MenuFooter() {
-    const { _otherStates, allHabbits } = useContext(HabbitsContext);
+    const { _otherStates, todaysHabbits } = useContext(HabbitsContext);
     const [percentage, setPercentage] = useState(0);
 
     useEffect(() => {
         let percent = 0;
-        allHabbits.forEach(habbit => percent += (habbit.done ? 1 / allHabbits.length : 0));
-        if (percent !== 0) {
-            setPercentage(percent);
-        }
-    },[allHabbits]);
+        todaysHabbits.forEach(habbit => percent += (habbit.done ? 1 / todaysHabbits.length : 0));
+        setPercentage(percent * 100);
+    },[todaysHabbits]);
 
     return (
         <MenuSC>

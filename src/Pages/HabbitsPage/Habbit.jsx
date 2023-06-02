@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import dump from '../../assets/dump.svg';
-import { BASE_URL, DeleteHabbit, HeaderConfig } from "../../constants/routes";
+import { BASE_URL, DeleteHabbit, HeaderConfig, updateAllHabbits } from "../../constants/routes";
 import { useContext, useState } from "react";
 import { HabbitsContext, UserContext } from "../../constants/Contexts";
 import axios from "axios";
@@ -18,7 +18,11 @@ export default function Habbit({ habbit }) {
         setWannaDelete(false);
         axios.delete(BASE_URL + DeleteHabbit(habbit.id), HeaderConfig(user.token))
             .then(() => {
-                setAllHabbits([]);
+                const route = updateAllHabbits(user, setAllHabbits);
+
+                if (route !== 'stay') {
+                    navigate(route);
+                }
             })
             .catch(error => {
                 alert(error.response.data.message);
@@ -88,7 +92,7 @@ const ConfirmingDeleteSC = styled.section`
     }
 `;
 
-const HabbitContainerSC = styled.div`
+const HabbitContainerSC = styled.li`
     position: relative;
     height: 91px;
     width: 340px;
