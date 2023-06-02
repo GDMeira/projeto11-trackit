@@ -5,7 +5,7 @@ import { HabbitsContext } from "../../constants/Contexts";
 import 'dayjs/locale/pt-br';
 
 export default function Text() {
-    const { _otherStates, allHabbits } = useContext(HabbitsContext);
+    const { _otherStates, todaysHabbits } = useContext(HabbitsContext);
 
     const [states, setStates] = useState({phrase: 'Nenhum hábito concluído ainda',color: '#BABABA'});
 
@@ -19,11 +19,12 @@ export default function Text() {
 
     useEffect(() => {
         let percentage = 0;
-        allHabbits.forEach(habbit => percentage += (habbit.done ? 1 / allHabbits.length : 0));
+        todaysHabbits.forEach(habbit => percentage += (habbit.done ? 1 / todaysHabbits.length : 0));
+        percentage = parseInt(percentage*100);
         if (percentage !== 0) {
-            setStates({phrase: `${parseInt(percentage*100)}% dos hábitos concluídos`, color: '#8FC549'})
+            setStates({phrase: `${percentage}% dos hábitos concluídos`, color: '#8FC549'})
         }
-    },[allHabbits]);
+    },[todaysHabbits]);
 
     function filterName(name) {
         let arrayName = name.split('');

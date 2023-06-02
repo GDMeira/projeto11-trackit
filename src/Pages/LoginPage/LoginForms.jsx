@@ -30,7 +30,6 @@ export default function LoginForms() {
             .then(response => {
                 //TODO: mudar rota destino para today (se n me engano)
                 navigate(Pages.today);
-                console.log(response.data);
                 setUser(response.data);
                 setStates({ ...states, isAbleToAnswer: true });
             })

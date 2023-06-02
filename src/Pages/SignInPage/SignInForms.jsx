@@ -26,7 +26,6 @@ export default function SignInForms() {
         axios.post(BASE_URL + SignIn, signInObj)
             .then(response => {
                 navigate(Pages.login);
-                console.log(response.data);
                 setUser(response.data);
                 setStates({ ...states, isAbleToAnswer: true });
             })

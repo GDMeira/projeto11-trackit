@@ -4,11 +4,14 @@ import { BASE_URL, DeleteHabbit, HeaderConfig, updateAllHabbits } from "../../co
 import { useContext, useState } from "react";
 import { HabbitsContext, UserContext } from "../../constants/Contexts";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 
 export default function Habbit({ habbit }) {
     const { user, _setUser } = useContext(UserContext);
-    const { _otherStates, setAllHabbits } = useContext(HabbitsContext);
+    const { _otherStates, setAllHabbits, setTodaysHabbits } = useContext(HabbitsContext);
+
+    const navigate = useNavigate();
 
     const [wannaDelete, setWannaDelete] = useState(false);
 
@@ -18,7 +21,7 @@ export default function Habbit({ habbit }) {
         setWannaDelete(false);
         axios.delete(BASE_URL + DeleteHabbit(habbit.id), HeaderConfig(user.token))
             .then(() => {
-                const route = updateAllHabbits(user, setAllHabbits);
+                const route = updateAllHabbits(user, setAllHabbits, setTodaysHabbits);
 
                 if (route !== 'stay') {
                     navigate(route);

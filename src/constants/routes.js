@@ -37,12 +37,12 @@ export function updateTodaysHabbits(user, setTodaysHabbits) {
     });
 }
 
-export function updateAllHabbits(user, setAllHabbits) {
+export function updateAllHabbits(user, setAllHabbits, setTodaysHabbits) {
     axios.get(BASE_URL + ListHabbits, HeaderConfig(user.token))
             .then(response => {
-                console.log(response.data);
                 setAllHabbits(response.data);
-                return 'stay'
+                const route = updateTodaysHabbits(user, setTodaysHabbits)
+                return route
             })
             .catch(error => {
                 alert(error.response.data.message);

@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 
 export default function NewHabbit() {
     const { user, _setUser } = useContext(UserContext);
-    const { _otherStates, setAllHabbits } = useContext(HabbitsContext);
+    const { _otherStates, setAllHabbits, setTodaysHabbits} = useContext(HabbitsContext);
 
     const navigate = useNavigate();
 
@@ -46,7 +46,7 @@ export default function NewHabbit() {
             .then(response => {
                 setFormStates(initialFormStates());
                 setCreating(false); //hidding forms
-                const route = updateAllHabbits(user, setAllHabbits);
+                const route = updateAllHabbits(user, setAllHabbits, setTodaysHabbits);
 
                 if (route !== 'stay') {
                     navigate(route);
@@ -137,7 +137,7 @@ const TitleSC = styled.div`
         color: #126BA5;
     }
 
-    button {
+    > button {
         background-color: #52B6FF;
         width: 40px;
         height: 35px;

@@ -14,7 +14,7 @@ export default function HabbitsPage() {
     const { user, setUser } = useContext(UserContext);
 
     useEffect(() => {
-        const route = updateAllHabbits(user, setAllHabbits);
+        const route = updateAllHabbits(user, setAllHabbits, setTodaysHabbits);
 
         if (route !== 'stay') {
             navigate(route);
