@@ -4,7 +4,7 @@ import { UserContext } from "../constants/Contexts";
 
 
 export default function Header() {
-    const {user, setUser} = useContext(UserContext);
+    const {user, _setUser} = useContext(UserContext);
 
     return (
         <HeaderSC>

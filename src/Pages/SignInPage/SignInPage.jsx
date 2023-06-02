@@ -23,6 +23,7 @@ const SignInSC = styled.main`
     align-items: center;
 
     a {
+        font-size: 14px;
         margin-top: 25px;
         text-decoration: underline;
         color: #52B6FF;

@@ -28,7 +28,8 @@ export default function LoginForms() {
         setStates({ ...states, isAbleToAnswer: false });
         axios.post(BASE_URL+Login, {email: states.email, password: states.password})
             .then(response => {
-                navigate(Pages.habbits);
+                //TODO: mudar rota destino para today (se n me engano)
+                navigate(Pages.today);
                 console.log(response.data);
                 setUser(response.data);
                 setStates({ ...states, isAbleToAnswer: true });
@@ -65,7 +66,6 @@ export default function LoginForms() {
                                                             radius="7"
                                                             color="#fff"
                                                             ariaLabel="three-dots-loading"
-
                                                             visible={true}
                                                         />)
                 }

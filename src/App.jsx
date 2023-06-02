@@ -12,11 +12,12 @@ function App() {
   useContext(UserContext);
   useContext(HabbitsContext);
   const [user, setUser] = useState(0);
-  const [habbits, setHabbits] = useState([]);
+  const [todaysHabbits, setTodaysHabbits] = useState([]);
+  const [allHabbits, setAllHabbits] = useState([]);
 
   return (
     <UserContext.Provider value={{ user, setUser }}>
-      <HabbitsContext.Provider value={{ habbits, setHabbits }}>
+      <HabbitsContext.Provider value={{ todaysHabbits, setTodaysHabbits, allHabbits, setAllHabbits }}>
         <BrowserRouter>
           <Routes>
             <Route path={Pages.login} element={<LoginPage />} />

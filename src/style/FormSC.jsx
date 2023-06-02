@@ -11,9 +11,10 @@ export const FormSC = styled.form`
         padding-left: 10px;
         font-size: 20px;
         height: 45px;
-        width: clamp(303px, 80%, 600px);
+        width: 303px;
         margin: 3px 0;
         border-radius: 5px;
+        color: ${props => props.disabled ? '#AFAFAF' : '#666666'};
 
         &::placeholder {
             color: #D4D4D4;
@@ -37,7 +38,7 @@ export const FormSC = styled.form`
 
     button {
         height: 45px;
-        width: clamp(303px, 80%, 600px);
+        width: 303px;
         margin: 3px 0;
         border-radius: 5px;
         border: none;
