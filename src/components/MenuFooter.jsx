@@ -12,7 +12,7 @@ export default function MenuFooter() {
 
     useEffect(() => {
         let percent = 0;
-        todaysHabbits.forEach(habit => percent += (habit.done ? 1 / todaysHabbits.length : 0));
+        todaysHabbits.forEach(habbit => percent += (habbit.done ? 1 / todaysHabbits.length : 0));
         setPercentage(percent * 100);
     },[todaysHabbits]);
 

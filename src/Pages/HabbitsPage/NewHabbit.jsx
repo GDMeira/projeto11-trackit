@@ -72,11 +72,13 @@ export default function NewHabbit() {
                     {weekDays.map((day, i) => <ButtonWeekDateSC
                         key={i}
                         type='button'
-                        value={day}
                         onClick={() => toggleDay(i)}
                         disabled={!formStates.isAbleToAnswer}
                         isSelected={formStates.days.includes(i)}
-                    />)}
+                    >
+                        {day}
+                    </ButtonWeekDateSC>
+                    )}
                 </ButtonsSC>
                 <ManegeButtonsSC>
                     <button
@@ -195,7 +197,7 @@ const ButtonsSC = styled.div`
     width: 100%;
 `;
 
-const ButtonWeekDateSC = styled.input.attrs(() => ({'data-test':'habit-day'}))`
+const ButtonWeekDateSC = styled.button.attrs(() => ({'data-test':'habit-day'}))`
     width: 30px;
     height: 30px;
     margin-right: 4px;
