@@ -81,7 +81,7 @@ const HabbitContainer = styled.li.attrs(() => ({'data-test':'today-habit-contain
         height: 70px;
         border-radius: 5px;
         border: ${props => props.isDone ? 'none' : '1px solid #E7E7E7'};
-        background-color: ${props => props.isDone ? '#8FC549' : '#EBEBEB'};
+        background: ${props => props.isDone ? '#8FC549' : '#EBEBEB'};
     }
 
     span {

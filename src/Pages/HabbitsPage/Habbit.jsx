@@ -96,7 +96,7 @@ const ConfirmingDeleteSC = styled.section`
     }
 `;
 
-const HabbitContainerSC = styled.li`
+const HabbitContainerSC = styled.li.attrs(() => ({'data-test': 'habit-container'}))`
     position: relative;
     height: 91px;
     width: 340px;

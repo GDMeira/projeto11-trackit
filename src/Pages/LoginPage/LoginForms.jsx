@@ -19,6 +19,14 @@ export default function LoginForms() {
     });
 
     useEffect(() => {
+        const savedUser = localStorage.getItem('user');
+
+        if (savedUser !== undefined) {
+            const user = JSON.parse(savedUser);
+            setUser(user);
+            navigate(Pages.today);
+        }
+
         if (user.email && user.password) {
             setStates({...states, email: user.email, password: user.password});
         }
@@ -29,9 +37,9 @@ export default function LoginForms() {
         setStates({ ...states, isAbleToAnswer: false });
         axios.post(BASE_URL+Login, {email: states.email, password: states.password})
             .then(response => {
-                //TODO: mudar rota destino para today (se n me engano)
                 navigate(Pages.today);
                 setUser(response.data);
+                localStorage.setItem('user', JSON.stringify(response.data));
                 setStates({ ...states, isAbleToAnswer: true });
             })
             .catch(error => {
