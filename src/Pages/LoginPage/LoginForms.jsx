@@ -21,7 +21,7 @@ export default function LoginForms() {
     useEffect(() => {
         const savedUser = localStorage.getItem('user');
 
-        if (savedUser !== undefined) {
+        if (savedUser) {
             const user = JSON.parse(savedUser);
             setUser(user);
             navigate(Pages.today);
