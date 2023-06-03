@@ -10,10 +10,11 @@ import { ThreeDots } from 'react-loader-spinner';
 export default function LoginForms() {
     const navigate = useNavigate();
     const {user, setUser} = useContext(UserContext);
-    //TODO: retirar infos iniciais do states
     const [states, setStates] = useState({
-        email: 'gmdelgado@gmail.com',
-        password: '1234',
+        // email: 'gmdelgado@gmail.com',
+        // password: '1234',
+        email: '',
+        password: '',
         isAbleToAnswer: true
     });
 
