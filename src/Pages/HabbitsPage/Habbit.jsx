@@ -110,7 +110,7 @@ const HabbitContainerSC = styled.li.attrs(() => ({'data-test': 'habit-container'
     margin-bottom: 10px;
 `;
 
-const ButtonDumpSC = styled.button`
+const ButtonDumpSC = styled.button.attrs((() => ({'data-test': 'habit-delete-btn'})))`
     width: 13px;
     height: 15px;
     border: none;
