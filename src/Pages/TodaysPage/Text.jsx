@@ -55,8 +55,8 @@ export default function Text() {
 
     return (
         <TextSC color={states.color}>
-            <h1>{nameWeekDay}, {day}/{month}</h1>
-            <h2>{states.phrase}</h2>
+            <h1 data-test='today'>{nameWeekDay}, {day}/{month}</h1>
+            <h2 data-test='today-counter'>{states.phrase}</h2>
         </TextSC>
     )
 }

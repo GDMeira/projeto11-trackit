@@ -33,18 +33,24 @@ export default function TodaysHabbit({habbit}) {
     return (
         <HabbitContainer isDone={habbit.done}>
             <div>
-                <h1>{habbit.name}</h1>
-                <h2>Sequêcnia atual: {habbit.currentSequence}</h2>
-                <h2>Seu recorde: {habbit.highestSequence}</h2>
+                <h1 data-test='today-habit-name'>{habbit.name}</h1>
+                <h2 data-test='today-habit-sequence'>
+                    Sequêcnia atual: <span>{habbit.currentSequence}</span> {habbit.currentSequence === 1 ? 'dia' : 'dias'}
+                </h2>
+                <h2 data-test='today-habit-record'>
+                    Seu recorde: {habbit.currentSequence === habbit.highestSequence ? (
+                    <span>{habbit.highestSequence}</span>) : (habbit.highestSequence)} 
+                    {habbit.currentSequence === 1 ? ' dia' : ' dias'}
+                </h2>
             </div>
-            <button onClick={() => handleClick()}>
+            <button onClick={() => handleClick()} data-test='today-habit-check-btn'>
                 <img src={check} alt='check' />
             </button>
         </HabbitContainer>
     )
 }
 
-const HabbitContainer = styled.li`
+const HabbitContainer = styled.li.attrs(() => ({'data-test':'today-habit-container'}))`
     width: 340px;
     height: 95px;
     background-color: #fff;
@@ -78,5 +84,7 @@ const HabbitContainer = styled.li`
         background-color: ${props => props.isDone ? '#8FC549' : '#EBEBEB'};
     }
 
-
+    span {
+        color: ${props => props.isDone ? '#8FC549' : '#666666'};
+    }
 `;

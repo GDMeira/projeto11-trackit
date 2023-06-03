@@ -9,12 +9,12 @@ export default function Header() {
     return (
         <HeaderSC>
             <h1>TrackIt</h1>
-            <img src={user.image} alt="user image" />
+            <img src={user.image} alt="user image" data-test='avatar'/>
         </HeaderSC>
     )
 }
 
-const HeaderSC = styled.header`
+const HeaderSC = styled.header.attrs(() => ({'data-test':'header'}))`
     width: 100%;
     height: 70px;
     position: fixed;

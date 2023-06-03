@@ -83,12 +83,14 @@ export default function NewHabbit() {
                         type='button'
                         disabled={!formStates.isAbleToAnswer}
                         onClick={() => setCreating(false)}
+                        data-test='habit-create-cancel-btn'
                     >
                         Cancelar
                     </button>
                     <button
                         type='submit'
                         disabled={!formStates.isAbleToAnswer}
+                        data-test='habit-create-save-btn'
                     >
                         {formStates.isAbleToAnswer ? 'Salvar' : (<ThreeDots
                             height="30"
@@ -114,6 +116,7 @@ export default function NewHabbit() {
                 <button
                     disabled={creating}
                     onClick={() => setCreating(!creating)}
+                    data-test='habit-create-btn'
                 >
                     <IonIcon icon={add}></IonIcon>
                 </button>
@@ -156,7 +159,7 @@ const TitleSC = styled.div`
     }
 `;
 
-const MakingNewHabbitSC = styled.form`
+const MakingNewHabbitSC = styled.form.attrs(() => ({'data-test':'habit-create-container'}))`
     height: 180px;
     width: 340px;
     border-radius: 5px;
@@ -169,7 +172,7 @@ const MakingNewHabbitSC = styled.form`
     margin-bottom: 30px;
 `;
 
-const InputSC = styled.input`
+const InputSC = styled.input.attrs(() => ({'data-test':'habit-name-input'}))`
     width: 303px;
     height: 45px;
     padding-left: 10px;
@@ -192,7 +195,7 @@ const ButtonsSC = styled.div`
     width: 100%;
 `;
 
-const ButtonWeekDateSC = styled.input`
+const ButtonWeekDateSC = styled.input.attrs(() => ({'data-test':'habit-day'}))`
     width: 30px;
     height: 30px;
     margin-right: 4px;

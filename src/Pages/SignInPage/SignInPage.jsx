@@ -9,7 +9,7 @@ export default function SignInPage() {
         <SignInSC>
             <Brand/>
             <SignInForms />
-            <Link to={Pages.login} >
+            <Link to={Pages.login} data-test='login-link'>
                 Já tem uma conta? Faça login!
             </Link>
         </SignInSC>

@@ -45,6 +45,7 @@ export default function SignInForms() {
                 value={states.email}
                 onChange={e => setStates({ ...states, email: e.target.value })}
                 required
+                data-test='email-input'
             />
             <input
                 type="password"
@@ -53,6 +54,7 @@ export default function SignInForms() {
                 value={states.password}
                 onChange={e => setStates({ ...states, password: e.target.value })}
                 required
+                data-test='password-input'
             />
             <input
                 type="text"
@@ -61,6 +63,7 @@ export default function SignInForms() {
                 value={states.name}
                 onChange={e => setStates({ ...states, name: e.target.value })}
                 required
+                data-test='user-name-input'
             />
             <input
                 type="url"
@@ -69,8 +72,9 @@ export default function SignInForms() {
                 value={states.image}
                 onChange={e => setStates({ ...states, image: e.target.value })}
                 required
+                data-test='user-image-input'
             />
-            <button type="submit" disabled={!states.isAbleToAnswer}>
+            <button type="submit" disabled={!states.isAbleToAnswer} data-test='signup-btn'>
                 {states.isAbleToAnswer ? 'Cadastrar' : (<ThreeDots
                                                             height="40"
                                                             width="90"

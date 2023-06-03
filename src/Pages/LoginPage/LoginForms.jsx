@@ -49,6 +49,7 @@ export default function LoginForms() {
                 value={states.email}
                 onChange={e => setStates({...states, email: e.target.value})}
                 required
+                data-test='email-input'
             />
             <input
                 type="password"
@@ -57,8 +58,9 @@ export default function LoginForms() {
                 value={states.password}
                 onChange={e => setStates({...states, password: e.target.value})}
                 required
+                data-test='password-input'
             />
-            <button type="submit" disabled={!states.isAbleToAnswer}>
+            <button type="submit" disabled={!states.isAbleToAnswer} data-test='login-btn'>
                 {states.isAbleToAnswer ? 'Entrar' : (<ThreeDots
                                                             height="40"
                                                             width="90"

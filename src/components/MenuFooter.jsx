@@ -12,14 +12,14 @@ export default function MenuFooter() {
 
     useEffect(() => {
         let percent = 0;
-        todaysHabbits.forEach(habbit => percent += (habbit.done ? 1 / todaysHabbits.length : 0));
+        todaysHabbits.forEach(habit => percent += (habit.done ? 1 / todaysHabbits.length : 0));
         setPercentage(percent * 100);
     },[todaysHabbits]);
 
     return (
         <MenuSC>
-            <Link to={Pages.habbits}>Hábitos</Link>
-            <Link to={Pages.today}>
+            <Link to={Pages.habbits} data-test='habit-link'>Hábitos</Link>
+            <Link to={Pages.today} data-test='today-link'>
                 <CircularProgressbar
                     value={percentage}
                     text={'Hoje'}
@@ -33,12 +33,12 @@ export default function MenuFooter() {
                     })}
                 />
             </Link>
-            <Link to={Pages.history}>Histórico</Link>
+            <Link to={Pages.history} data-test='history-link' >Histórico</Link>
         </MenuSC>
     )
 }
 
-const MenuSC = styled.footer`
+const MenuSC = styled.footer.attrs(() => ({'data-test':'menu'}))`
     position: fixed;
     bottom: 0;
     left: 0;

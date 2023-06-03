@@ -13,7 +13,7 @@ export default function LoginPage() {
         <LoginSC>
             <Brand />
             <LoginForms />
-            <Link to={Pages.signIn} >
+            <Link to={Pages.signIn} data-test='signup-link'>
                 Não tem uma conta? Cadastre-se!
             </Link>
         </LoginSC>

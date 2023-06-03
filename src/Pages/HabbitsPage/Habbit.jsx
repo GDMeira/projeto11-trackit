@@ -70,6 +70,7 @@ const ConfirmingDeleteSC = styled.section`
     z-index: 2;
     position: fixed;
     top: 0;
+    left: 0;
     display: flex;
     justify-content: center;
     align-items: center;
