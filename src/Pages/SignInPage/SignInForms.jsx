@@ -45,6 +45,7 @@ export default function SignInForms() {
                 value={states.email}
                 onChange={e => setStates({ ...states, email: e.target.value })}
                 required
+                autoComplete="username"
                 data-test='email-input'
             />
             <input
@@ -54,6 +55,7 @@ export default function SignInForms() {
                 value={states.password}
                 onChange={e => setStates({ ...states, password: e.target.value })}
                 required
+                autoComplete="new-password"
                 data-test='password-input'
             />
             <input
