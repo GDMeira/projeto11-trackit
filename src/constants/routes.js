@@ -64,11 +64,12 @@ export async function updateHistoryHabits(user, setHistoryHabits) {
         .then(response => {
             setHistoryHabits(response.data);
             console.log(response.data);
-            route = 'stay'
+            route = 'stay';
         })
         .catch(error => {
             alert(error.response.data.message);
-            route = Pages.login;
+            //route = Pages.login;
+            route = 'stay';
         });
 
     return route
