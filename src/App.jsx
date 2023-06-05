@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
 import { HabbitsContext, UserContext } from './constants/Contexts';
 import LoginPage from './Pages/LoginPage/LoginPage';
 import SignInPage from './Pages/SignInPage/SignInPage';
@@ -11,9 +11,14 @@ import { Pages } from './constants/routes';
 function App() {
   useContext(UserContext);
   useContext(HabbitsContext);
+
   const [user, setUser] = useState(0);
   const [todaysHabbits, setTodaysHabbits] = useState([]);
   const [allHabbits, setAllHabbits] = useState([]);
+
+  const redirectToPrimeiraPagina = () => {
+    navigate(Pages.login);
+  };
 
   return (
     <UserContext.Provider value={{ user, setUser }}>
