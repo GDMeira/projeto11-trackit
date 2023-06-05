@@ -20,7 +20,7 @@ export default function TodaysPage() {
                 if (resp !== 'stay') {
                     navigate(resp);
                 }
-            })
+            });
     }, []);
 
     return (

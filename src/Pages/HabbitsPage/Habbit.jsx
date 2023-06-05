@@ -13,38 +13,31 @@ export default function Habbit({ habbit }) {
 
     const navigate = useNavigate();
 
-    const [wannaDelete, setWannaDelete] = useState(false);
-
     const weekDays = ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'];
 
     function deleteHabbit() {
-        setWannaDelete(false);
-        axios.delete(BASE_URL + DeleteHabbit(habbit.id), HeaderConfig(user.token))
-            .then(() => {
-                const route = updateAllHabbits(user, setAllHabbits, setTodaysHabbits);
+        const wannaDelete = confirm('Deletar hábito?');
 
-                if (route !== 'stay') {
-                    navigate(route);
-                }
+        if (wannaDelete) {
+            axios.delete(BASE_URL + DeleteHabbit(habbit.id), HeaderConfig(user.token))
+            .then(() => {
+                updateAllHabbits(user, setAllHabbits, setTodaysHabbits)
+                    .then(resp => {
+                        if (resp !== 'stay') {
+                            navigate(resp);
+                        }
+                    });
             })
             .catch(error => {
                 alert(error.response.data.message);
             });
+        }
     }
 
     return (
         <>
-            {wannaDelete && <ConfirmingDeleteSC>
-                <div>
-                    <p>Deseja deletar esse hábito?</p>
-                    <div>
-                        <button onClick={() => setWannaDelete(false)}>Cancel</button>
-                        <button onClick={() => deleteHabbit()}>Confirm</button>
-                    </div>
-                </div>
-            </ConfirmingDeleteSC>}
             <HabbitContainerSC >
-                <ButtonDumpSC onClick={() => setWannaDelete(true)}>
+                <ButtonDumpSC onClick={() => deleteHabbit()}>
                     <img src={dump} alt="dump" />
                 </ButtonDumpSC>
                 <HabbitNameSC>
@@ -64,58 +57,6 @@ export default function Habbit({ habbit }) {
         </>
     )
 }
-
-const ConfirmingDeleteSC = styled.section`
-    height: 100vh;
-    width: 100vw;
-    opacity: 0.85;
-    background-color: #000;
-    z-index: 2;
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    div {
-        width: 350px;
-        height: 150px;
-        background-color: #fff;
-        border-radius: 5px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: center;
-        text-align: center;
-
-        div {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-            align-items: center;
-
-
-            button {
-                font-size: 30px;
-                background: none;
-                border: none;
-                font-weight: 700;
-            }
-
-            button:nth-child(2) {
-                color: red;
-                font-weight: 700;
-            }
-        }
-
-        p {
-            font-size: 27px;
-            margin-top: 8px;
-            font-weight: 700;
-        }
-    }
-`;
 
 const HabbitContainerSC = styled.li.attrs(() => ({ 'data-test': 'habit-container' }))`
     position: relative;

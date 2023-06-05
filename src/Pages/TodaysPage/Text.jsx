@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import dayjs from 'dayjs';
 import { useContext, useEffect, useState } from "react";
 import { HabbitsContext } from "../../constants/Contexts";
 import 'dayjs/locale/pt-br';
+import dayjs from 'dayjs';
 
 export default function Text() {
     const { _otherStates, todaysHabbits } = useContext(HabbitsContext);

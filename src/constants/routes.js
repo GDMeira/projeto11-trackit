@@ -58,12 +58,18 @@ export async function updateAllHabbits(user, setAllHabbits, setTodaysHabbits) {
 }
 
 export async function updateHistoryHabits(user, setHistoryHabits) {
+    let route;
+
     await axios.get(BASE_URL + DailyHabitsHistory, HeaderConfig(user.token))
         .then(response => {
             setHistoryHabits(response.data);
             console.log(response.data);
+            route = 'stay'
         })
         .catch(error => {
             alert(error.response.data.message);
+            route = Pages.login;
         });
+
+    return route
 }
