@@ -36,8 +36,11 @@ export default function Habbit({ habbit }) {
         <>
             {wannaDelete && <ConfirmingDeleteSC>
                 <div>
-                    <button onClick={() => setWannaDelete(false)}>Cancelar</button>
-                    <button onClick={() => deleteHabbit()}>Confirmar</button>
+                    <p>Deseja deletar esse hábito?</p>
+                    <div>
+                        <button onClick={() => setWannaDelete(false)}>Cancel</button>
+                        <button onClick={() => deleteHabbit()}>Confirm</button>
+                    </div>
                 </div>
             </ConfirmingDeleteSC>}
             <HabbitContainerSC >
@@ -65,7 +68,7 @@ export default function Habbit({ habbit }) {
 const ConfirmingDeleteSC = styled.section`
     height: 100vh;
     width: 100vw;
-    opacity: 0.8;
+    opacity: 0.85;
     background-color: #000;
     z-index: 2;
     position: fixed;
@@ -77,26 +80,44 @@ const ConfirmingDeleteSC = styled.section`
 
     div {
         width: 350px;
-        height: 100px;
+        height: 150px;
         background-color: #fff;
         border-radius: 5px;
         display: flex;
+        flex-direction: column;
         justify-content: space-around;
         align-items: center;
+        text-align: center;
 
-        button {
-            font-size: 30px;
-            background: none;
-            border: none;
+        div {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+
+
+            button {
+                font-size: 30px;
+                background: none;
+                border: none;
+                font-weight: 700;
+            }
+
+            button:nth-child(2) {
+                color: red;
+                font-weight: 700;
+            }
         }
 
-        button:nth-child(2) {
-            color: red;
+        p {
+            font-size: 27px;
+            margin-top: 8px;
+            font-weight: 700;
         }
     }
 `;
 
-const HabbitContainerSC = styled.li.attrs(() => ({'data-test': 'habit-container'}))`
+const HabbitContainerSC = styled.li.attrs(() => ({ 'data-test': 'habit-container' }))`
     position: relative;
     height: 91px;
     width: 340px;
@@ -110,7 +131,7 @@ const HabbitContainerSC = styled.li.attrs(() => ({'data-test': 'habit-container'
     margin-bottom: 10px;
 `;
 
-const ButtonDumpSC = styled.button.attrs((() => ({'data-test': 'habit-delete-btn'})))`
+const ButtonDumpSC = styled.button.attrs((() => ({ 'data-test': 'habit-delete-btn' })))`
     width: 13px;
     height: 15px;
     border: none;
@@ -120,7 +141,7 @@ const ButtonDumpSC = styled.button.attrs((() => ({'data-test': 'habit-delete-btn
     right: 15px;
 `;
 
-const HabbitNameSC = styled.div.attrs((() => ({'data-test': 'habit-name'})))`
+const HabbitNameSC = styled.div.attrs((() => ({ 'data-test': 'habit-name' })))`
     width: 303px;
     height: 45px;
     font-size: 20px;
@@ -132,7 +153,7 @@ const ButtonsSC = styled.div`
     width: 100%;
 `;
 
-const ButtonWeekDateSC = styled.button.attrs((() => ({'data-test': 'habit-day'})))`
+const ButtonWeekDateSC = styled.button.attrs((() => ({ 'data-test': 'habit-day' })))`
     width: 30px;
     height: 30px;
     margin-right: 4px;

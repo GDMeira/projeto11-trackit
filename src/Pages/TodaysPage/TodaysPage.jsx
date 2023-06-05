@@ -16,8 +16,10 @@ export default function TodaysPage() {
 
     useEffect(() => {
         updateTodaysHabbits(user, setTodaysHabbits)
-            .then(response => {
-                console.log(response);
+            .then(resp => {
+                if (resp !== 'stay') {
+                    navigate(resp);
+                }
             })
     }, []);
 

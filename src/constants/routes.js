@@ -26,28 +26,35 @@ export const Pages = {
 };
 
 export async function updateTodaysHabbits(user, setTodaysHabbits) {
+    let route;
+
     await axios.get(BASE_URL + ListTodaysHabbits, HeaderConfig(user.token))
         .then(response => {
             setTodaysHabbits(response.data);
-            return 'stay'
+            route = 'stay';
         })
         .catch(error => {
             alert(error.response.data.message);
-            return Pages.login
+            route = Pages.login;
         });
+
+        return route
 }
 
 export async function updateAllHabbits(user, setAllHabbits, setTodaysHabbits) {
+    let route;
+
     await axios.get(BASE_URL + ListHabbits, HeaderConfig(user.token))
             .then(response => {
                 setAllHabbits(response.data);
-                const route = updateTodaysHabbits(user, setTodaysHabbits)
-                return route
+                const route = updateTodaysHabbits(user, setTodaysHabbits);
             })
             .catch(error => {
                 alert(error.response.data.message);
-                return Pages.login
+                route = Pages.login;
             });
+    
+    return route
 }
 
 export async function updateHistoryHabits(user, setHistoryHabits) {

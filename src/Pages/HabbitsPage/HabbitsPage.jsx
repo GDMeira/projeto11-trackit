@@ -14,11 +14,13 @@ export default function HabbitsPage() {
     const { user, setUser } = useContext(UserContext);
 
     useEffect(() => {
-        const route = updateAllHabbits(user, setAllHabbits, setTodaysHabbits);
+        updateAllHabbits(user, setAllHabbits, setTodaysHabbits)
+            .then(resp => {
+                if (resp !== 'stay') {
+                    navigate(resp);
+                }
+            })
 
-        if (route !== 'stay') {
-            navigate(route);
-        }
     }, [])
 
     function content() {
