@@ -120,7 +120,7 @@ const ButtonDumpSC = styled.button.attrs((() => ({'data-test': 'habit-delete-btn
     right: 15px;
 `;
 
-const HabbitNameSC = styled.div`
+const HabbitNameSC = styled.div.attrs((() => ({'data-test': 'habit-name'})))`
     width: 303px;
     height: 45px;
     font-size: 20px;
@@ -132,7 +132,7 @@ const ButtonsSC = styled.div`
     width: 100%;
 `;
 
-const ButtonWeekDateSC = styled.button`
+const ButtonWeekDateSC = styled.button.attrs((() => ({'data-test': 'habit-day'})))`
     width: 30px;
     height: 30px;
     margin-right: 4px;

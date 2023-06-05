@@ -6,13 +6,19 @@ import Header from '../../components/Header';
 import TodaysHabbit from './TodaysHabbit';
 import MenuFooter from "../../components/MenuFooter";
 import Text from "./Text";
+import { useNavigate } from "react-router-dom";
 
 export default function TodaysPage() {
+    const navigate = useNavigate();
+
     const { todaysHabbits, setTodaysHabbits, allHabbits, setAllHabbits } = useContext(HabbitsContext);
     const { user, setUser } = useContext(UserContext);
 
     useEffect(() => {
-        updateTodaysHabbits(user, setTodaysHabbits);
+        updateTodaysHabbits(user, setTodaysHabbits)
+            .then(response => {
+                console.log(response);
+            })
     }, []);
 
     return (

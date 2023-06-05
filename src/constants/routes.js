@@ -5,7 +5,7 @@ export const SignIn = '/auth/sign-up';
 export const Login = '/auth/login';
 export const CreateHabbit = '/habits';
 export const ListHabbits = '/habits';
-export const DailyHabbitsHistory = '/habits/history/daily';
+export const DailyHabitsHistory = '/habits/history/daily';
 export const ListTodaysHabbits = '/habits/today';
 
 export const DeleteHabbit = ID_DO_HABITO => `/habits/${ID_DO_HABITO}`;
@@ -25,20 +25,20 @@ export const Pages = {
     history: '/historico'
 };
 
-export function updateTodaysHabbits(user, setTodaysHabbits) {
-    axios.get(BASE_URL + ListTodaysHabbits, HeaderConfig(user.token))
-    .then(response => {
-        setTodaysHabbits(response.data);
-        return 'stay'
-    })
-    .catch(error => {
-        alert(error.response.data.message);
-        return Pages.login
-    });
+export async function updateTodaysHabbits(user, setTodaysHabbits) {
+    await axios.get(BASE_URL + ListTodaysHabbits, HeaderConfig(user.token))
+        .then(response => {
+            setTodaysHabbits(response.data);
+            return 'stay'
+        })
+        .catch(error => {
+            alert(error.response.data.message);
+            return Pages.login
+        });
 }
 
-export function updateAllHabbits(user, setAllHabbits, setTodaysHabbits) {
-    axios.get(BASE_URL + ListHabbits, HeaderConfig(user.token))
+export async function updateAllHabbits(user, setAllHabbits, setTodaysHabbits) {
+    await axios.get(BASE_URL + ListHabbits, HeaderConfig(user.token))
             .then(response => {
                 setAllHabbits(response.data);
                 const route = updateTodaysHabbits(user, setTodaysHabbits)
@@ -48,4 +48,15 @@ export function updateAllHabbits(user, setAllHabbits, setTodaysHabbits) {
                 alert(error.response.data.message);
                 return Pages.login
             });
+}
+
+export async function updateHistoryHabits(user, setHistoryHabits) {
+    await axios.get(BASE_URL + DailyHabitsHistory, HeaderConfig(user.token))
+        .then(response => {
+            setHistoryHabits(response.data);
+            console.log(response.data);
+        })
+        .catch(error => {
+            alert(error.response.data.message);
+        });
 }

@@ -2,8 +2,20 @@ import styled from "styled-components";
 import { HabbitsContext, UserContext } from "../../constants/Contexts";
 import Header from '../../components/Header';
 import MenuFooter from "../../components/MenuFooter";
+import { useContext, useEffect, useState } from "react";
+import { updateHistoryHabits } from "../../constants/routes";
 
 export default function HistoryPage() {
+    const { todaysHabbits, _otherStates} = useContext(HabbitsContext);
+    const { user, _setUser } = useContext(UserContext);
+
+    const [historyHabits, setHistoryHabits] = useState(0);
+
+    useEffect(() => {
+        updateHistoryHabits(user, setHistoryHabits);
+    }, [todaysHabbits])
+
+
     return (
         <>
             <Header />
