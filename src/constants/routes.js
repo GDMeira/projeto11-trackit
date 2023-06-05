@@ -63,7 +63,6 @@ export async function updateHistoryHabits(user, setHistoryHabits) {
     await axios.get(BASE_URL + DailyHabitsHistory, HeaderConfig(user.token))
         .then(response => {
             setHistoryHabits(response.data);
-            console.log(response.data);
             route = 'stay';
         })
         .catch(error => {

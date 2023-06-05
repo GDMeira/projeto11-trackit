@@ -39,8 +39,6 @@ export default function HistoryPage() {
         return day
     });
 
-    console.log(datesToAddClassTo);
-
     function isSameDay(day1, day2) {
         return day1 === dayjs(day2).format('DD/MM/YYYY')
     }
