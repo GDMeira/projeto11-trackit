@@ -60,34 +60,40 @@ export default function Habbit({ habbit }) {
 
 const HabbitContainerSC = styled.li.attrs(() => ({ 'data-test': 'habit-container' }))`
     position: relative;
-    height: 91px;
-    width: 340px;
-    border-radius: 5px;
+    height: 14vh;
+    width: 90vw;
+    border-radius: 0.75vh;
     background-color: #fff;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    padding: 18px;
-    margin-bottom: 10px;
+    padding: 4vw;
+    margin-bottom: 1.5vh;
 `;
 
 const ButtonDumpSC = styled.button.attrs((() => ({ 'data-test': 'habit-delete-btn' })))`
-    width: 13px;
-    height: 15px;
+    width: 3.8vw;
+    height: 2.6vh;
     border: none;
     background: none;
     position: absolute;
     top: 10px;
     right: 15px;
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
 `;
 
 const HabbitNameSC = styled.div.attrs((() => ({ 'data-test': 'habit-name' })))`
-    width: 303px;
-    height: 45px;
-    font-size: 20px;
-    margin-bottom: 10px;
     color: #666666;
+    width: 81vw;
+    height: 7vh;
+    padding-left: 10px;
+    font-size: 3vh;
+    margin-bottom: 1.5vh;
 `;
 
 const ButtonsSC = styled.div`
@@ -95,12 +101,12 @@ const ButtonsSC = styled.div`
 `;
 
 const ButtonWeekDateSC = styled.button.attrs((() => ({ 'data-test': 'habit-day' })))`
-    width: 30px;
-    height: 30px;
-    margin-right: 4px;
-    font-size: 20px;
+    width: 8vw;
+    height: 4.5vh;
+    margin-right: 1vw;
+    font-size: 3vh;
     border: 1px solid #D4D4D4;
-    border-radius: 5px;
+    border-radius: 0.75vh;
     color: ${props => props.isSelected ? '#fff' : '#DBDBDB'};
     background-color: ${props => props.isSelected ? '#CFCFCF' : '#fff'};
 `;

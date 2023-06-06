@@ -130,29 +130,28 @@ export default function NewHabbit() {
 }
 
 const TitleSC = styled.div`
-    width: 100%;
+    width: 91vw;
     display: flex;
     justify-content: space-between;
-    padding: 0 15px;
-    margin: 20px 0;
+    margin: 5vh 0;
     align-items: center;
 
     h1 {
-        font-size: 23px;
+        font-size: clamp(1rem, 5vh, 2rem);
         color: #126BA5;
     }
 
     > button {
         background-color: #52B6FF;
-        width: 40px;
-        height: 35px;
+        width: 10.6vw;
+        height: 6vh;
         color: #fff;
-        font-size: 20px;
+        font-size: 3vh;
         font-weight: 700;
         display: flex;
         justify-content: center;
         align-items: center;
-        border-radius: 5px;
+        border-radius: 0.75vh;
         border: none;
 
         ion-icon {
@@ -162,26 +161,26 @@ const TitleSC = styled.div`
 `;
 
 const MakingNewHabbitSC = styled.form.attrs(() => ({'data-test':'habit-create-container'}))`
-    height: 180px;
-    width: 340px;
-    border-radius: 5px;
+    height: 27vh;
+    width: 90vw;
+    border-radius: 0.75vh;
     background-color: #fff;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    padding: 18px;
-    margin-bottom: 30px;
+    padding: 3.5vw;
+    margin-bottom: 4.5vh;
 `;
 
 const InputSC = styled.input.attrs(() => ({'data-test':'habit-name-input'}))`
-    width: 303px;
-    height: 45px;
+    width: 100%;
+    min-height: 7vh;
     padding-left: 10px;
-    font-size: 20px;
+    font-size: 3vh;
     border: 1px solid #D4D4D4;
-    border-radius: 5px;
-    margin-bottom: 10px;
+    border-radius: 0.75vh;
+    margin-bottom: 1.5vh;
     color: ${props => props.disabled ? '#B3B3B3' : '#666666'};
 
     &::placeholder {
@@ -198,12 +197,12 @@ const ButtonsSC = styled.div`
 `;
 
 const ButtonWeekDateSC = styled.button.attrs(() => ({'data-test':'habit-day'}))`
-    width: 30px;
-    height: 30px;
-    margin-right: 4px;
-    font-size: 20px;
+    width: 8vw;
+    height: 4.5vh;
+    margin-right: 1vw;
+    font-size: 3vh;
     border: 1px solid #D4D4D4;
-    border-radius: 5px;
+    border-radius: 0.75vh;
     color: ${props => props.isSelected ? '#fff' : '#DBDBDB'};
     background-color: ${props => props.isSelected ? '#CFCFCF' : '#fff'};
 `;
@@ -212,12 +211,12 @@ const ManegeButtonsSC = styled.div`
     width: 100%;
     display: flex;
     justify-content: flex-end;
-    margin-top: 30px;
+    margin-top: 3.5vh;
 
     button {
-        font-size: 16px;
-        width: 84px;
-        height: 35px;
+        font-size: 2.5vh;
+        width: 22vw;
+        height: 6vh;
 
         &:disabled {
             opacity: 0.7;
@@ -231,13 +230,13 @@ const ManegeButtonsSC = styled.div`
         background: none;
         border: none;
         color: #52B6FF;
-        margin-right: 20px;
+        margin-right: 6vw;
     }
 
     button:nth-child(2) {
         background-color: #52B6FF;
         border: none;
-        border-radius: 5px;
+        border-radius: 0.75vh;
         color: #fff;
     }
 `;

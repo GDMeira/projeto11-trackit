@@ -59,25 +59,28 @@ export default function TodaysHabbit({habbit}) {
 }
 
 const HabbitContainer = styled.li.attrs(() => ({'data-test':'today-habit-container'}))`
-    width: 340px;
-    height: 95px;
+    width: 91vw;
+    height: 14vh;
     background-color: #fff;
     color: #666666;
     border: none;
-    border-radius: 5px;
+    border-radius: 0.75vh;
     padding: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 1.5vh;
 
     h1 {
-        font-size: 20px;
-        margin-bottom: 5px;
+        color: #666666;
+        width: 91%;
+        font-size: 3vh;
+        margin-bottom: 1.5vh;
     }
 
     h2 {
-        font-size: 13px;
+        font-size: 2vh;
+        margin-bottom: 0.3vh;
     }
 
     div {
@@ -85,9 +88,9 @@ const HabbitContainer = styled.li.attrs(() => ({'data-test':'today-habit-contain
     }
 
     button {
-        width: 70px;
-        height: 70px;
-        border-radius: 5px;
+        width: 10vh;
+        height: 10vh;
+        border-radius: 0.75vh;
         border: ${props => props.isDone ? 'none' : '1px solid #E7E7E7'};
         background: ${props => props.isDone ? '#8FC549' : '#EBEBEB'};
     }

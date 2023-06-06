@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { HabbitsContext } from "../../constants/Contexts";
 import 'dayjs/locale/pt-br';
 import dayjs from 'dayjs';
+import { TitlePageSC } from "../../style/PageSC";
 
 export default function Text() {
     const { _otherStates, todaysHabbits } = useContext(HabbitsContext);
@@ -55,26 +56,20 @@ export default function Text() {
 
     return (
         <TextSC color={states.color}>
-            <h1 data-test='today'>{nameWeekDay}, {day}/{month}</h1>
+            <TitlePageSC data-test='today'>{nameWeekDay}, {day}/{month}</TitlePageSC>
             <h2 data-test='today-counter'>{states.phrase}</h2>
         </TextSC>
     )
 }
 
 const TextSC = styled.div`
-    width: 340px;
+    width: 90%;
     text-align: left;
-    margin-top: 30px;
-
-    h1 {
-        font-size: 23px;
-        color: #126BA5;
-    }
 
     h2 {
-        font-size: 18px;
+        font-size: clamp(1rem, 4vh, 1.5rem);
         color: ${props => props.color};
-        margin-top: 5px;
-        margin-bottom: 30px;
+        margin-top: -4vh;
+        margin-bottom: 5vh;
     }
 `;

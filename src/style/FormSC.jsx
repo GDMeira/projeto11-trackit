@@ -9,17 +9,19 @@ export const FormSC = styled.form`
     input {
         border: 1px solid #D4D4D4;
         padding-left: 10px;
-        font-size: 20px;
-        height: 45px;
-        width: 303px;
-        margin: 3px 0;
+        font-size: clamp(1.5rem, 3vw, 2.5rem);
+        height: 7vh;
+        min-height: 45px;
+        width: 80vw;
+        min-width: 303px;
+        margin: 0.5vh 0;
         border-radius: 5px;
         color: ${props => props.disabled ? '#AFAFAF' : '#666666'};
 
         &::placeholder {
             color: #D4D4D4;
             
-            font-size: 20px;
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
         };
 
         &:hover {
@@ -37,14 +39,16 @@ export const FormSC = styled.form`
     }
 
     button {
-        height: 45px;
-        width: 303px;
-        margin: 3px 0;
+        height: 7vh;
+        min-height: 45px;
+        width: 80vw;
+        min-width: 303px;
+        margin: 0.5vh 0;
         border-radius: 5px;
         border: none;
         background-color: #52B6FF;
         color: #ffffff;
-        font-size: 21px;
+        font-size: clamp(1.5rem, 5vw, 2.5rem);
 
         &:disabled {
             opacity: 0.7;

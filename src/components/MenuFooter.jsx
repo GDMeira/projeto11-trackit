@@ -43,23 +43,22 @@ const MenuSC = styled.footer.attrs(() => ({'data-test':'menu'}))`
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 70px;
+    height: 10vh;
     background-color: #fff;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    padding: 0 ;
 
     a {
-        font-size: 18px;
+        font-size: clamp(1.3rem, 2.5vh, 2.3rem);
         text-decoration: none;
         color: #52B6FF;
         cursor: pointer;
 
         &:nth-child(2) {
-            width: 90px;
-            height: 90px;
-            margin-bottom: 40px;
+            width: 14vh;
+            height: 14vh;
+            margin-bottom: 7vh;
         
             .CircularProgressbar-text {
                 font-family: 'Lexend Deca', sans-serif;

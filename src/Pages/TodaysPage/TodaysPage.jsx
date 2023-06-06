@@ -7,6 +7,7 @@ import TodaysHabbit from './TodaysHabbit';
 import MenuFooter from "../../components/MenuFooter";
 import Text from "./Text";
 import { useNavigate } from "react-router-dom";
+import { PageSC } from "../../style/PageSC";
 
 export default function TodaysPage() {
     const navigate = useNavigate();
@@ -26,23 +27,13 @@ export default function TodaysPage() {
     return (
         <>
             <Header />
-            <TodaysHabbitsSC>
+            <PageSC>
                 <Text />
                 <ul>
                     {todaysHabbits.map(habbit => <TodaysHabbit key={habbit.id} habbit={habbit} />)}
                 </ul>
-            </TodaysHabbitsSC>
+            </PageSC>
             <MenuFooter />
         </>
     )
 }
-
-const TodaysHabbitsSC = styled.main`
-    margin: 70px 0;
-    min-height: calc(667px - 140px);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    background-color: #E5E5E5;
-`;

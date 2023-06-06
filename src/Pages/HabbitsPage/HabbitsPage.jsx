@@ -7,6 +7,9 @@ import { useNavigate } from "react-router-dom";
 import NewHabbit from "./NewHabbit";
 import Habbit from './Habbit';
 import MenuFooter from "../../components/MenuFooter";
+import { PageSC } from "../../style/PageSC";
+
+//TODO: implementar PageSC
 
 export default function HabbitsPage() {
     const navigate = useNavigate();
@@ -39,10 +42,10 @@ export default function HabbitsPage() {
     return (
         <>
             <Header />
-            <HabbitsSC>
+            <PageSC>
                 <NewHabbit/>
                 {content()}
-            </HabbitsSC>
+            </PageSC>
             <MenuFooter/>
         </>
     )

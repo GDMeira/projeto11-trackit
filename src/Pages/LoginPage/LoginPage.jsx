@@ -25,10 +25,11 @@ const LoginSC = styled.main`
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    padding-top: 10vh;
 
     a {
-        font-size: 14px;
-        margin-top: 25px;
+        font-size: clamp(1rem, 2.5vw, 2rem);
+        margin-top: 5vh;
         text-decoration: underline;
         color: #52B6FF;
         cursor: pointer;

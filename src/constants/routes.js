@@ -67,8 +67,7 @@ export async function updateHistoryHabits(user, setHistoryHabits) {
         })
         .catch(error => {
             alert(error.response.data.message);
-            //route = Pages.login;
-            route = 'stay';
+            route = Pages.login;
         });
 
     return route

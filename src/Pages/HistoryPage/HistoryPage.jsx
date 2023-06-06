@@ -3,13 +3,16 @@ import { HabbitsContext, UserContext } from "../../constants/Contexts";
 import Header from '../../components/Header';
 import MenuFooter from "../../components/MenuFooter";
 import { useContext, useEffect, useState } from "react";
-import { updateHistoryHabits } from "../../constants/routes";
+import { Pages, updateHistoryHabits } from "../../constants/routes";
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import 'dayjs/locale/pt-br';
 import dayjs from 'dayjs';
 import { useNavigate } from "react-router-dom";
 import './calendarStyle.css';
+import { PageSC, TitlePageSC } from "../../style/PageSC";
+
+//TODO: implementar PageSC
 
 export default function HistoryPage() {
     const navigate = useNavigate();
@@ -65,48 +68,28 @@ export default function HistoryPage() {
     return (
         <>
             <Header />
-            <TodaysHabbitsSC>
-                <TextSC>
-                    <h1>Histórico</h1>
-                </TextSC>
-                <div data-test="calendar">
+            <PageSC>
+                <TitlePageSC>Histórico</TitlePageSC>
+                <CalendarSC data-test="calendar">
                     <Calendar
                         style={{ height: '402px' }}
                         onChange={onChange}
                         value={date}
                         tileClassName={tileClassName}
                     />
-                </div>
-            </TodaysHabbitsSC>
+                </CalendarSC>
+            </PageSC>
             <MenuFooter />
         </>
     )
 }
 
-const TodaysHabbitsSC = styled.main`
-    margin: 70px 0;
-    min-height: calc(667px - 140px);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    background-color: #E5E5E5;
-`;
+const CalendarSC = styled.div`
+    scale: 2;
+    position: absolute;
+    top: 35vh;
 
-const TextSC = styled.div`
-    width: 340px;
-    text-align: left;
-    margin: 30px 0;
-
-    h1 {
-        font-size: 23px;
-        color: #126BA5;
-    }
-
-    h2 {
-        font-size: 18px;
-        color: #666666;
-        margin-top: 15px;
-        margin-bottom: 30px;
+    @media (max-width: 730px) {
+        scale: 1;
     }
 `;
